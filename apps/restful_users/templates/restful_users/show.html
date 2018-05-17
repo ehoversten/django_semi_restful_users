@@ -5,12 +5,11 @@
         <title>Success page</title>
     </head>
     <body>
-        <h1>Welcome {{request.session.first_name}}!</h1>
+      <h1>Welcome {{ this_user.first_name}}!</h1>
 
-        <p>Id: {{request.session.id}}</p>
-        <p>First Name: {{request.session.first_name}}</p>
-        <p>Last Name: {{request.session.last_name}}</p>
-        <p>Email: {{request.session.email}}</p>
-
+      <p>Id: {{ this_user.id}}</p>
+      <p>First Name: {{ this_user.first_name}}</p>
+      <p>Last Name: {{ this_user.last_name}}</p>
+      <p>Email: {{ this_user.email}}</p>
     </body>
 </html>

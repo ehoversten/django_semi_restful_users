@@ -6,5 +6,6 @@ urlpatterns = [
     url(r'^users/$', views.index),
     url(r'^new$', views.new),
     url(r'^process$', views.process),
-    url(r'^show$', views.show),
+    # url(r'^show$', views.show),
+    url(r'^show/(?P<returned_id>\d+)$', views.show),
 ]

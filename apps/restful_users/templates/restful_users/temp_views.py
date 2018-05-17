@@ -29,7 +29,18 @@ def process(request):
 
     if results[0]:
         # save id in session (which is in results[1])
-        # (True, user_object)
+        # (True, owner_object)
+        #
+        # ------- Session is not needed for this assignment ---
+        # request.session['id'] = results[1].id
+        # request.session['first_name'] = results[1].first_name
+        # request.session['last_name'] = results[1].last_name
+        # request.session['email'] = results[1].email
+        # --- cannot add a DateTime OBJECT to 'session'
+        # request.session['created_at'] = results[1].created_at
+        # print("*"*25)
+        # print('Session: ', request.session)
+        # print("*"*25)
         return redirect('/show')
     else:
         # transfer errors to flash messages (also in results[1])
@@ -40,30 +51,12 @@ def process(request):
 
     return redirect('/new')
 
-# def process_btns(request):
-#     if request.POST['show'] == 'show':
-#         return redirect('/show')
 
 def new(request):
 
     return render(request, 'restful_users/new.html')
 
-#
-# def process_show(request):
-#     this_id = request.POST['id']
-#     this_user = User.objects.get(id=this_id)
-#     print("-"*25)
-#     print(this_user)
-#     return redirect('/show')
 
-def show(request, returned_id):
-    # all_users = User.objects.all()
-    # print(all_users)
-    # this_id = request.POST['id']
-    this_user = User.objects.get(id=returned_id)
-    print("-"*25)
-    print(this_user)
-    context = {
-        'this_user' : this_user
-    }
-    return render(request, 'restful_users/show.html', context)
+def show(request):
+
+    return render(request, 'restful_users/show.html')
