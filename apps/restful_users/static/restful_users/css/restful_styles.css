@@ -1,0 +1,20 @@
+* {
+  margin: 0px auto;
+}
+
+.header {
+  height: 100px;
+  background-color: lightgrey;
+  margin-bottom: 30px;
+}
+
+.form_container {
+  width: 500px;
+
+}
+
+.form_container input {
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 5px 0px;
+}

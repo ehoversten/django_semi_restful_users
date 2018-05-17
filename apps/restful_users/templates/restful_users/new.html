@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Semi-Restful Users</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'restful_users/css/restful_styles.css' %}">
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="header">
+        <div class="navber">
+          <h1>Assignment: Semi-Restful Users w/ Django and SQLite</h1>
+        </div>
+      </div>
+      <div class="container">
+        <div class="messages">
+          {% if messages %}
+            {% for message in messages %}
+            <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+            {% endfor %}
+          {% endif %}
+        </div>
+        <div class="form_container">
+          <form class="form-group" action="/process" method="post">
+            {% csrf_token %}
+
+            <h1>Add a new User</h1>
+            First Name:<input type="text" name="first_name" value="">
+            Last Name:<input type="text" name="last_name" value="">
+            Email:<input type="text" name="email" value="">
+            <button class='btn btn-primary' type="submit" name="new_user_submit">Create</button>
+          </form>
+        </div>
+        <div class="back_btn">
+          <a href="/users"></a><button class='btn btn-primary' type="button" name="button">Back</button>
+        </div>
+      </div>
+  </body>
+</html>

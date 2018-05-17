@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Success page</title>
+    </head>
+    <body>
+        <h1>Welcome {{request.session.first_name}}!</h1>
+
+        <p>Id: {{request.session.id}}</p>
+        <p>First Name: {{request.session.first_name}}</p>
+        <p>Last Name: {{request.session.last_name}}</p>
+        <p>Email: {{request.session.email}}</p>
+
+    </body>
+</html>

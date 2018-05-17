@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Semi-Restful Users</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'restful_users/css/restful_styles.css' %}">
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="header">
+        <div class="navber">
+          <h1>Assignment: Semi-Restful Users w/ Django and SQLite</h1>
+        </div>
+      </div>
+      <div class="container">
+        <div class="table_container">
+          <!-- Loop through and view each OBJECT.name
+          {% for user in all_users %}
+          Loop through and view each OBJECT
+            <p>{{ user }}</p>
+          Loop through and view each user.first_name
+            <p>{{ user.first_name }} {{ user.last_name }}</p>
+
+          {% endfor %} -->
+          <table class="table table-dark">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">ID</th>
+                <th scope="col">Full Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Created At</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">#</th>
+                <td>001</td>
+                <td>Jacob</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+                <td>Today</td>
+                <td>
+                  <form class="form-group" action="/process_btns" method="post">
+
+                    <button class="btn btn-primary" type="submit" name="show">Show</button>
+                    <button class="btn btn-primary" type="submit" name="edit">Edit</button>
+                    <button class="btn btn-primary" type="submit" name="delete">Delete</button>
+
+                    <a href="#"><button type="submit" name="show">Show</button></a>
+                    <a href="#"><button type="submit" name="edit">Edit</button></a>
+                    <a href="#"><button type="submit" name="delete">Delete</button></a>
+
+                  </form>
+                </td>
+
+              </tr>
+              <tr>
+                <th scope="row">#</th>
+                <td>001</td>
+                <td>Bozo</td>
+                <td>The Clown</td>
+                <td>@bozo</td>
+                <td>Yesterday</td>
+                <td>
+                  <form class="form-group" action="/process_btns" method="post">
+
+                    <button class="btn btn-primary" type="submit" name="show">Show</button>
+                    <button class="btn btn-primary" type="submit" name="edit">Edit</button>
+                    <button class="btn btn-primary" type="submit" name="delete">Delete</button>
+
+                  </form>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">#</th>
+                <td>001</td>
+                <td>Larry</td>
+                <td>David</td>
+                <td>@david</td>
+                <td>Thrusday</td>
+                <td>SHOW     EDIT     DELETE</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
