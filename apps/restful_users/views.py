@@ -48,21 +48,28 @@ def new(request):
 
     return render(request, 'restful_users/new.html')
 
-#
-# def process_show(request):
-#     this_id = request.POST['id']
-#     this_user = User.objects.get(id=this_id)
-#     print("-"*25)
-#     print(this_user)
-#     return redirect('/show')
 
-def show(request, returned_id):
+def process_btn(request):
+    returned_id = int(request.POST['id'])
+    print("-"*25)
+    print('ID: ', returned_id)
+    request.session['returned_id'] = returned_id
+    # this_user = User.objects.get(id=returned_id)
+    print("-"*25)
+    # print(this_user)
+    return redirect('/show')
+
+# def show(request, returned_id):
+
+def show(request):
     # all_users = User.objects.all()
     # print(all_users)
     # this_id = request.POST['id']
-    this_user = User.objects.get(id=returned_id)
-    print("-"*25)
-    print(this_user)
+    # this_user = User.objects.get(id=returned_id)
+    # this_user = User.objects.get(id=this_id)
+    # print("-"*25)
+    # print(this_user)
+    this_user = User.objects.get(id=request.session['returned_id'])
     context = {
         'this_user' : this_user
     }

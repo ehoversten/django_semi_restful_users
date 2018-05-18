@@ -22,3 +22,7 @@
 button {
   margin-right: 7px;
 }
+
+.btn_align {
+  display: flex;
+}
