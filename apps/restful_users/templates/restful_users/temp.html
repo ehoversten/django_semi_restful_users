@@ -55,6 +55,24 @@
                     <a href="#"><button type="submit" name="delete">Delete</button></a>
 
                   </form>
+                  <!-- Code for using forms to POST the data if we want to pass the data using SESSION -->
+                  <form class="form-group" action="/process_btn" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="id" value="{{ user.id }}">
+                    <button class="btn btn-primary" type="submit" name="show">Show</button>
+                  </form>
+
+                  <form class="form-group" action="/process_btn" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="id" value="{{ user.id }}">
+                    <button class="btn btn-primary" type="submit" name="edit">Edit</button>
+                  </form>
+
+                  <form class="form-group" action="/process_btn" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="id" value="{{ user.id }}">
+                    <button class="btn btn-primary" type="submit" name="delete">Delete</button>
+                  </form>
                 </td>
 
               </tr>

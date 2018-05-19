@@ -11,5 +11,7 @@
       <p>First Name: {{ this_user.first_name}}</p>
       <p>Last Name: {{ this_user.last_name}}</p>
       <p>Email: {{ this_user.email}}</p>
+      <p><a href="/users/{{ this_user.id }}/edit">Edit</a> | <a href="/users/{{ this_user.id }}/destroy">Delete</a></p>
+      <a href="/"><button class='btn btn-primary' type="button" name="button">Back</button></a>
     </body>
 </html>

@@ -6,6 +6,9 @@
   height: 100px;
   background-color: lightgrey;
   margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
 }
 
 .form_container {

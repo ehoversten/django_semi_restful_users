@@ -23,18 +23,19 @@
           {% endif %}
         </div>
         <div class="form_container">
-          <form class="form-group" action="/process" method="post">
+          <form class="form-group" action="/users/create" method="post">
             {% csrf_token %}
 
             <h1>Add a new User</h1>
             First Name:<input type="text" name="first_name" value="">
             Last Name:<input type="text" name="last_name" value="">
             Email:<input type="text" name="email" value="">
-            <button class='btn btn-primary' type="submit" name="new_user_submit">Create</button>
+            <input class='btn btn-primary' type="submit" value="Create">
+
           </form>
         </div>
         <div class="back_btn">
-          <a href="/users"></a><button class='btn btn-primary' type="button" name="button">Back</button>
+          <a href="/"><button class='btn btn-primary' type="button" name="button">Back</button></a>
         </div>
       </div>
   </body>

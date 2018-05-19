@@ -15,8 +15,10 @@ def index(request):
 
     return render(request, 'restful_users/index.html', context)
 
+def new(request):
+    return render(request, 'restful_users/new.html')
 
-def process(request):
+def create(request):
     print("*"*50)
     print('Post: ', request.POST)
     print("*"*50)
@@ -26,51 +28,60 @@ def process(request):
     print('Results: ', results)
     print("*"*20)
 
-
     if results[0]:
-        # save id in session (which is in results[1])
-        # (True, user_object)
-        return redirect('/show')
+        return redirect('/')
     else:
-        # transfer errors to flash messages (also in results[1])
-        # (False, errors)
-
         for error in results[1]:
             messages.add_message(request, messages.ERROR, error)
 
-    return redirect('/new')
-
-# def process_btns(request):
-#     if request.POST['show'] == 'show':
-#         return redirect('/show')
-
-def new(request):
-
-    return render(request, 'restful_users/new.html')
+    return redirect('/')
 
 
-def process_btn(request):
-    returned_id = int(request.POST['id'])
-    print("-"*25)
-    print('ID: ', returned_id)
-    request.session['returned_id'] = returned_id
-    # this_user = User.objects.get(id=returned_id)
-    print("-"*25)
-    # print(this_user)
-    return redirect('/show')
+def destroy(request, id):
+    User.objects.get(id=id).delete()
+    return redirect('/')
 
-# def show(request, returned_id):
 
-def show(request):
+def show(request, returned_id):
     # all_users = User.objects.all()
     # print(all_users)
     # this_id = request.POST['id']
-    # this_user = User.objects.get(id=returned_id)
-    # this_user = User.objects.get(id=this_id)
-    # print("-"*25)
-    # print(this_user)
-    this_user = User.objects.get(id=request.session['returned_id'])
+    this_user = User.objects.get(id=returned_id)
+    print("-"*25)
+    print('User show OBJECT contains: ', this_user)
+
     context = {
         'this_user' : this_user
     }
+
+    print("-"*25)
+    print("Context contains: ", context)
+# --- Pass our USER OBJECT in our context to our HTML view
     return render(request, 'restful_users/show.html', context)
+
+
+def edit(request, returned_id):
+    edit_user = User.objects.get(id=returned_id)
+    print("-"*25)
+    print('User Edit OBJECT contains: ', edit_user)
+
+    context = {
+        'edit_user' : edit_user
+    }
+
+    print("-"*25)
+    print("Context contains: ", context)
+    return render(request, 'restful_users/edit.html', context)
+
+def update(request, returned_id):
+    print(request.POST)
+    context = {
+        "id": returned_id
+    }
+    user = User.objects.get(id=returned_id)
+    user.first_name = request.POST['first_name']
+    user.last_name = request.POST['last_name']
+    user.email = request.POST['email']
+    user.save()
+    return redirect('/users/{}'.format(returned_id))
+    # return redirect('/')
