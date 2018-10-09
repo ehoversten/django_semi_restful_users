@@ -1,6 +1,8 @@
 from django.shortcuts import render, HttpResponse, redirect
 from .models import *
 from django.contrib import messages
+from django.core import serializers
+import json
 
 # Create your views here.
 def index(request):
@@ -85,3 +87,32 @@ def update(request, returned_id):
     user.save()
     return redirect('/users/{}'.format(returned_id))
     # return redirect('/')
+
+
+
+#  //------- AJAX CODE -----------//
+
+def ajax_page(request):
+    all_users = User.objects.all()
+
+    context = {
+        'all_users' : all_users
+    }
+
+    return render(request, 'restful_users/ajax_page.html', context)
+
+
+def all_json(request):
+    users = User.objects.all()
+    return HttpResponse(serializers.serialize('json', users), content_type='application/json')
+
+def all_html(request):
+    return render(request, 'restful_users/all.html', {'users':User.objects.all()})
+
+
+def find(request):
+    return render(request, 'restful_users/all.html', {'users':User.objects.filter(first_name__startswith=request.POST['first_name_starts_with'])})
+
+def create(request):
+    User.objects.create(first_name=request.POST['first_name'], last_name=request.POST['last_name'], email=request.POST['email'])
+    return render(request, 'restful_users/all.html', {'users':User.objects.order_by('-id')})

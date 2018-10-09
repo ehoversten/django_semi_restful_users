@@ -11,6 +11,12 @@ urlpatterns = [
     url(r'^users/(?P<returned_id>\d+)/edit$', views.edit),
     url(r'^users/(?P<id>\d+)/destroy$', views.destroy),
     url(r'^users/(?P<returned_id>\d+)/update$', views.update),
+
+    url(r'^ajax$', views.ajax_page),
+    url(r'^all.json$', views.all_json),
+    url(r'^all.html$', views.all_html),
+    url(r'^find$', views.find),
+    url(r'^create$', views.create)
 ]
 
 
